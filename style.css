@@ -1,0 +1,198 @@
+:root{
+    --blue:#61dfff;
+    --darkGray:#121212;
+}
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+.hidden {
+    display: none;
+}
+.main {
+    height: 100dvh;
+    width: 100dvw;
+    background-color: var(--darkGray);
+    color: white;
+    display: grid; 
+    grid-auto-flow: row dense; 
+    grid-auto-rows: 1fr; 
+    grid-template-columns: 2fr; 
+    grid-template-rows: 0.5fr 3fr 0.3fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      "header"
+      "resultDiv"
+      "footer"; 
+}
+.header {
+    display: grid; 
+    grid-template-columns: 0.5fr 2fr 0.5fr; 
+    grid-template-rows: 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      "logo addressContainer nav"; 
+    grid-area: header; 
+    justify-items: center; 
+    align-items: center; 
+    grid-area: header; 
+}
+.logo {
+    width: 100%;
+    padding-left: 10px;
+    grid-area:logo;
+    justify-items:start;
+    align-items: start;}
+.logo img {
+    width: 64px;
+    height: 64px;
+}
+.addressContainer {
+    grid-area: addressContainer;
+    height: 2em;
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 50px;
+    padding: 6px;
+    margin-block: 20px;
+    background-color: #161616;
+    border: 2px solid var(--darkGray);
+    transition: 0.15s all ease-in-out;
+}
+.addressContainer:focus-within{
+    border: 2px solid white;
+}
+.address {
+    grid-area: "header";
+    border: none;
+    outline:none;
+    height: 100%;
+    width: 80%;
+    background-color: transparent;
+    color: white;
+    font-size: 24px;
+    border-radius: 50px 0px 0px 50px;
+    padding-left: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    justify-self: center; 
+
+}
+.address::placeholder{
+    font-size: 0.75em;
+    color: #ffffff9b;
+}
+.searchBtn {
+    height: 100%;
+    width: 20%;
+    border: none;
+    outline:none;
+    border-radius: 50px;
+    background-color: var(--blue);
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--darkGray);
+    font-size: 18px;
+    transition: 0.2s ease-in-out all;
+}
+.searchBtn:hover{
+    background-color: white;
+    color: var(--darkGray);
+    transform: scale(1.02);
+}
+.nav { 
+    display: flex;
+    grid-area: nav;
+    width: 80%;
+    justify-content: end;
+    padding-right: 10px;
+}
+.nav button {
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+.nav i {
+    font-size: 26px;
+    color: white;
+}
+.navDiv{
+    position: absolute;
+    top: 8%;
+    height: 25%;
+    width: 15%;
+    border: 1px solid white;
+    border-radius: 10px;
+    transition: 1s ease-in-out all;
+    background-color: var(--darkGray);
+}
+.resultDiv {
+    /* border: 1px solid white; */
+    height: 80dvh;
+    width: 100dvw;
+    /* background-image: url('./src/LMK/16x9/Visual\ 4.png'); */
+    background-position:center;
+    background-size: 90%;
+    background-repeat: no-repeat;
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    grid-template-rows: 0.6fr 1.4fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      "balance balance balance"
+      "history history history"; 
+    grid-area: resultDiv;
+}
+.balance { 
+    display: flex;
+    /* border: 1px solid white; */
+    height: 80%;
+    width: 80%;
+    justify-self: center; 
+    align-self: center;
+    justify-content: center; 
+    align-items: center;
+    grid-area: balance;
+    border-radius: 10px;
+    background-color: #141414;
+    transition: 0.2s ease-in-out all;
+}
+.balance:hover{
+    background-color: #161616;
+}
+.balance span, .history span {
+    font-size: 36px;
+    font-weight: 800;
+}
+.history { 
+    /* border: 1px solid white; */
+    display: flex;
+    height: 100%;
+    width: 80%;
+    padding-top: 20px;
+    justify-content: center;
+    align-items: start;
+    justify-self: center; 
+    align-self: start; 
+    grid-area: history;
+    border-radius: 10px;
+    background-color: #141414;
+    transition: 0.2s ease-in-out all;
+}
+.history:hover{
+    background-color: #161616;
+}
+.footer {
+    height: 10dvh;
+    margin: 0px;
+    padding: 0px;
+    display:flex;
+    align-items: end;
+    justify-content: center;
+    grid-area: footer;
+    align-self: end;
+}
