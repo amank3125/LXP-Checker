@@ -1,6 +1,8 @@
 :root{
     --blue:#61dfff;
     --darkGray:#121212;
+    --red:#fd5555;
+    --darkred:rgba(255, 86, 86, 0.18);
 }
 body {
     padding: 0;
@@ -8,7 +10,7 @@ body {
     font-family: 'Courier New', Courier, monospace;
 }
 .hidden {
-    display: none;
+    display: none !important;
 }
 .main {
     height: 100dvh;
@@ -78,7 +80,6 @@ body {
     padding-left: 10px;
     font-family: 'Courier New', Courier, monospace;
     justify-self: center; 
-
 }
 .address::placeholder{
     font-size: 0.75em;
@@ -124,7 +125,7 @@ body {
     position: absolute;
     top: 8%;
     height: 25%;
-    width: 15%;
+    width: 20%;
     border: 1px solid white;
     border-radius: 10px;
     transition: 1s ease-in-out all;
@@ -155,18 +156,25 @@ body {
     justify-self: center; 
     align-self: center;
     justify-content: center; 
-    align-items: center;
+    align-items: end;
     grid-area: balance;
     border-radius: 10px;
     background-color: #141414;
     transition: 0.2s ease-in-out all;
+    padding-block: 15px;
 }
 .balance:hover{
     background-color: #161616;
 }
 .balance span, .history span {
-    font-size: 36px;
+    font-size: 32px;
     font-weight: 800;
+    line-height: 0;
+}
+.lxpBalance {
+    font-size: 64px;
+    text-align: center;
+    line-height: 0;
 }
 .history { 
     /* border: 1px solid white; */
@@ -182,6 +190,7 @@ body {
     border-radius: 10px;
     background-color: #141414;
     transition: 0.2s ease-in-out all;
+    padding-block: 25px;
 }
 .history:hover{
     background-color: #161616;
@@ -195,4 +204,83 @@ body {
     justify-content: center;
     grid-area: footer;
     align-self: end;
+}
+
+/* error msg starts*/
+
+.errorContainer {
+    position: absolute;
+    top: 13%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 60px;
+    font-size: 18px;
+    /* width:calc(var(--width)/3); */
+    width:60px, 90px;
+    margin-bottom: 5%;
+    padding-inline: 10px;
+    border: 1px var(--red) solid;
+    border-radius: 10px;
+    background-color:var(--darkred);
+    color: var(--red);
+    transition: 0.25s ease-in all;
+    place-self: center;
+    backdrop-filter: blur(10px);
+  }
+  .errorIcon {
+    padding-right: 10px;
+  }
+  .errorIcon path,.errorClose path{
+    fill: var(--red);
+  }
+  .errorClose {
+    cursor: pointer;
+    padding-left:10px;
+    height: auto;
+    width: auto;
+    transition: 0.2s all ease-in-out;
+  }
+  .errorClose:hover{
+    transform: scale(1.2);
+    transform-origin: center;
+  }
+
+/* error msg ends */
+
+@media screen and (max-width:400px){
+    .main {
+        /* background-color: red; */
+        height: 100%;
+    }
+    .logo {
+        scale: 0.85;
+        padding-left: 0px;
+    }
+    .addressContainer {
+        width: 90%;
+        justify-self: start;
+    }
+    .address {
+        font-size: 1em;
+    }
+    .searchBtn {
+        font-size: 0.9em;
+        width: 15%;
+        text-align: center;
+    }
+    .navDiv {
+        height: 40%;
+        width: 60%;
+        top: 12%;
+        right: 5%;
+    }
+    .balance span,.history span {
+        font-size: 1.5em;
+    }
+    .footer p {
+        font-size: 0.8em;
+        text-align: center;
+    }
 }
