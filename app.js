@@ -1,3 +1,4 @@
+const main = document.querySelector('.main');
 const showMenuBtn = document.querySelector('.showMenuBtn');
 const hideMenuBtn = document.querySelector('.hideMenuBtn');
 const walletAddress = document.querySelector('.address');
@@ -17,6 +18,12 @@ let lxp = 0;
 let userHistory = '';
 const dataAPI = './netlify/functions/getLXP.js';
 const historyAPI = './netlify/functions/getHistory.js';
+
+main.addEventListener('click',(e)=>{
+    if (!navDiv.contains(e.target) && e.target !== showMenuBtn && e.target !== hideMenuBtn ) {
+        hideMenu()
+    }
+})
 
 function showMenu(){
     showMenuBtn.classList.add('hidden');

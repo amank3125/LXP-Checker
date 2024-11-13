@@ -124,13 +124,35 @@ body {
 }
 .navDiv{
     position: absolute;
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    grid-template-rows: repeat(3, 1fr); 
+    grid-template-areas: 
+    "other other other"
+    "other other other"
+    "socials socials socials"; 
     top: 8%;
-    height: 25%;
+    height: 32%;
     width: 20%;
     border: 1px solid white;
     border-radius: 10px;
     transition: 1s ease-in-out all;
     background-color: var(--darkGray);
+    overflow: hidden;
+}
+.socials {
+    display: flex;
+    justify-self: center; 
+    align-self: end; 
+    width: 100%;
+    grid-area: socials; 
+    align-items: center;
+    justify-content: space-evenly;
+    padding-bottom: 5px;
+    /* border: 1px solid white; */
+}
+.socials i, img {
+    cursor: pointer;
 }
 .resultDiv {
     box-sizing: border-box;
@@ -380,9 +402,9 @@ img.lxpTokenImg {
         text-align: center;
     }
     .navDiv {
-        height: 40%;
-        width: 60%;
-        top: 12%;
+        height: 48%;
+        width: 90%;
+        top: 13%;
         right: 5%;
     }
     .balance span,.history span {
