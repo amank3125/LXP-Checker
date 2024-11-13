@@ -13,8 +13,9 @@ body {
     display: none !important;
 }
 .main {
-    height: 100dvh;
-    width: 100dvw;
+    overflow: hidden;
+    height: 100%;
+    width:100%;
     background-color: var(--darkGray);
     color: white;
     display: grid; 
@@ -132,6 +133,7 @@ body {
     background-color: var(--darkGray);
 }
 .resultDiv {
+    box-sizing: border-box;
     /* border: 1px solid white; */
     height: 80dvh;
     width: 100dvw;
@@ -142,13 +144,14 @@ body {
     display: grid; 
     grid-template-columns: repeat(3, 1fr); 
     grid-template-rows: 0.6fr 1.4fr; 
-    gap: 0px 0px; 
+    gap: 10px 0px; 
     grid-template-areas: 
       "balance balance balance"
       "history history history"; 
     grid-area: resultDiv;
 }
 .balance { 
+    box-sizing: border-box;
     display: flex;
     /* border: 1px solid white; */
     height: 80%;
@@ -159,17 +162,16 @@ body {
     align-items: end;
     grid-area: balance;
     border-radius: 10px;
-    background-color: #141414;
+    background-color: #161616;
     transition: 0.2s ease-in-out all;
     padding-block: 15px;
 }
-.balance:hover{
-    background-color: #161616;
-}
+
 .balance span, .history span {
     font-size: 32px;
     font-weight: 800;
     line-height: 0;
+    text-align: center;
 }
 .lxpBalance {
     font-size: 64px;
@@ -177,8 +179,9 @@ body {
     line-height: 0;
 }
 .history { 
+    box-sizing: border-box;
     /* border: 1px solid white; */
-    display: flex;
+    display: grid; 
     height: 100%;
     width: 80%;
     padding-top: 20px;
@@ -188,12 +191,57 @@ body {
     align-self: start; 
     grid-area: history;
     border-radius: 10px;
-    background-color: #141414;
+    background-color: #161616;
     transition: 0.2s ease-in-out all;
     padding-block: 25px;
 }
 .history:hover{
-    background-color: #161616;
+    /* background-color: #161616; */
+}
+.lxpHistory {
+    display: grid;
+    gap: 10px 10px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-top: 20px;
+}
+.lxpHistory a {
+    text-decoration: none;
+}
+.lxpCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #202020;
+    border-radius: 8px;
+    margin-block: 10px;
+    color: var(--blue);
+    padding: 5px 10px;
+    border-right: 5px solid var(--blue);
+    border-bottom: 5px solid #32a2be;
+    transition: 0.2s ease-in-out all;
+    background-color: #202020;
+}
+.lxpCard:hover {
+    background-color: var(--blue);
+    color: var(--darkGray);
+    border: 1px solid var(--blue);
+}
+p.lxpCardDate {
+    font-size: 12px;
+    color: #707070;
+}
+.innerCardDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+img.lxpTokenImg {
+    height: 24px;
+    border-radius: 50%;
+    margin-right: 8px;
+    border: 1px solid var(--darkGray);
 }
 .footer {
     height: 10dvh;
@@ -246,13 +294,74 @@ body {
     transform: scale(1.2);
     transform-origin: center;
   }
-
 /* error msg ends */
 
+.loader {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+.shimmerContainer {
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 10%;
+    width: 400px;
+    height: 250px;
+    /* border: 1px solid white; */
+}
+.shimmer {
+    /* border: 1px solid white; */
+    height: 50px;
+    width: 140px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background: linear-gradient(-60deg, #171717 40%, #202020 50%, #171717 60%);
+    background-size: 300%;
+    background-position-x: 100%;
+    animation: shimmer 1s infinite linear;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--darkGray);
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 15px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--blue);
+    height: 200px;
+  }
+
+@keyframes rotation {
+    to {
+        transform: rotate(360deg);
+    }
+}
+@keyframes shimmer {
+    to {
+       background-position-x: 0%
+    }
+ }
 @media screen and (max-width:400px){
     .main {
-        /* background-color: red; */
-        height: 100%;
+        height: auto;
     }
     .logo {
         scale: 0.85;
@@ -282,5 +391,21 @@ body {
     .footer p {
         font-size: 0.8em;
         text-align: center;
+    }
+    .lxpHistory {
+        padding-top: 20px;
+        grid-template-columns: 1fr 1fr;
+        overflow-y: scroll;
+        max-height: 300px;
+    }
+    .history {
+        height: auto;
+    }
+    .history span {
+        font-size: 1.3em;
+        text-align: center;
+    }
+    .lxpCard {
+        padding: 5px 5px;
     }
 }
