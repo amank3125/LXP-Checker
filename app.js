@@ -19,11 +19,16 @@ let userHistory = '';
 const dataAPI = './netlify/functions/getLXP.js';
 const historyAPI = './netlify/functions/getHistory.js';
 
-main.addEventListener('click',(e)=>{
-    if (!navDiv.contains(e.target) && e.target !== showMenuBtn && e.target !== hideMenuBtn ) {
-        hideMenu()
+main.addEventListener('click', (e) => {
+    if (
+        !navDiv.contains(e.target) &&
+        !showMenuBtn.contains(e.target) && 
+        !hideMenuBtn.contains(e.target)
+    ) {
+        hideMenu();
     }
-})
+});
+
 
 function showMenu(){
     showMenuBtn.classList.add('hidden');
@@ -78,7 +83,6 @@ async function fetchData(){
     callLoaders()
     const walletAdd = walletAddress.value.trim();
     const encodedAddress = encodeURIComponent(walletAdd);
-
     await fetch(`/.netlify/functions/getLXP?addr=${encodedAddress}`).then(resp=>resp.json()).then(data=>{
         hideLoaders();
         lxpBalance.textContent=(data.result/10**18).toFixed();
@@ -88,7 +92,7 @@ async function fetchData(){
         let dates = [];
         let value = [];
         let txnHash = [];
-        lxpHistory.innerHTML = ""
+        lxpHistory.innerHTML = "";
         for(i=0;i<data.result.length;i++){
         // dates.push(data.result[i].timestamp);
         // value.push(data.result[i].value);
